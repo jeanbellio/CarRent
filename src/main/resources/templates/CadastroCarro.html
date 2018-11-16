@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de Estoque</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+<link th:href="@{/css/Layout.css}"  href="../static/css/Layout.css" rel="stylesheet" />
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<form class="well form-horizontal" method="POST" th:object="${car}" th:action="@{/carro/add}">
+		<div class="container register">
+			<div class="row">
+				<div class="col-md-3 register-left">
+					<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+					<h3>Bem-vindo!</h3>
+					<p>30 anos de sucesso dirigindo com você no comando!</p>
+					<input type="submit" name="" value="Cadastro Carro"></input> <input
+						type="submit" name="" value="Cadastro Aluguel"></input><br /> <input
+						type="submit" name="" value="Ver Carros"></input><br />
+				</div>
+				<div class="col-md-9 register-right">
+					<div>
+						<h3 class="register-heading">Cadastro de carros</h3>
+						<h6 class="register-heading" th:if="${message}" th:text="${message}" style="position: absolute; right: 150px;"></h6>
+						<div class="row register-form">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" th:field="*{id}"
+										placeholder="Identificador" value="" disabled="disabled"></input>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Placa*"
+										value="" th:field="*{placa}"></input>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Modelo"
+										value="" th:field="*{modelo}"></input>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Marca"
+										value="" th:field="*{marca}"></input>
+								</div>
+								<div class="form-group">
+									<input type="number" name="carroAno" class="form-control" th:field="*{ano}"
+										placeholder="Ano" value=""></input>
+								</div>
+
+								<div class="form-group">
+									<select th:field="*{classe}" class="form-control">
+										<option th:value="' '" class="hidden">Classe</option>
+										<option th:value="'A'" th:text="A"></option>
+										<option th:value="'B'" th:text="B"></option>
+										<option th:value="'C'" th:text="C"></option>
+									</select>
+								</div>
+								<input type="submit" class="btnRegister" value="Registrar"></input>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
