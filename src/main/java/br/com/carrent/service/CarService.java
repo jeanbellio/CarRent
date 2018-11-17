@@ -40,30 +40,29 @@ public class CarService {
 		}
 	}
 
-	private String verificaAno(Car car, int anoAtual) {
+	public String verificaAno(Car car, int anoAtual) {
 		String menssagem = "Carro inserido com sucesso";
 		switch (car.getClasse()) {
 		case "A":
-			if (anoAtual - car.getAno() < 3) {
+			if (anoAtual - car.getAno() <= 3) {
 				carRepository.save(car);
+				return menssagem;
 			}
 			break;
 		case "B":
-			if (anoAtual - car.getAno() < 5) {
+			if (anoAtual - car.getAno() <= 5) {
 				carRepository.save(car);
+				return menssagem;
 			}
 			break;
 		case "C":
-			if (anoAtual - car.getAno() < 7) {
+			if (anoAtual - car.getAno() <= 7) {
 				carRepository.save(car);
+				return menssagem;
 			}
 			break;
-
-		default:
-			menssagem = "Carro não corresponde aos requisitos mínimos";
-			break;
 		}
-		return menssagem;
+		return "Carro não corresponde aos requisitos mínimos";
 	}
 
 	public Car update(Car car) {
@@ -79,4 +78,9 @@ public class CarService {
 		return carRepository.findAllByDisponivelTrue();
 	}
 
+	public void setCarRepository(CarRepository carRepository) {
+		this.carRepository = carRepository;
+	}
+
+	
 }
