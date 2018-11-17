@@ -1,14 +1,14 @@
 package br.com.carrent.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @ComponentScan("com.carrent.model")
@@ -19,22 +19,21 @@ public class Rent {
 	@ManyToOne
 	private Car carro;
 	private double valorFinal;
-	private LocalDateTime dataEntrada;
-	private LocalDateTime dataSaida;
-
-	@OneToOne
-	private Tax taxa;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataEntrada;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataSaida;
 
 	public Rent() {
 		super();
 	}
 
-	public Rent(Long id, Car carro, double valorFinal, Tax taxa) {
+
+	public Rent(Car carro, LocalDate dataEntrada, LocalDate dataSaida) {
 		super();
-		this.id = id;
 		this.carro = carro;
-		this.valorFinal = valorFinal;
-		this.taxa = taxa;
+		this.dataEntrada = dataEntrada;
+		this.dataSaida = dataSaida;
 	}
 
 	public Long getId() {
@@ -61,28 +60,20 @@ public class Rent {
 		this.valorFinal = valorFinal;
 	}
 
-	public LocalDateTime getDataEntrada() {
+	public LocalDate getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public void setDataEntrada(LocalDateTime dataEntrada) {
+	public void setDataEntrada(LocalDate dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}
 
-	public LocalDateTime getDataSaida() {
+	public LocalDate getDataSaida() {
 		return dataSaida;
 	}
 
-	public void setDataSaida(LocalDateTime dataSaida) {
+	public void setDataSaida(LocalDate dataSaida) {
 		this.dataSaida = dataSaida;
-	}
-
-	public Tax getTaxa() {
-		return taxa;
-	}
-
-	public void setTaxa(Tax taxa) {
-		this.taxa = taxa;
 	}
 
 }

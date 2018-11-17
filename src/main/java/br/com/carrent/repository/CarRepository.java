@@ -8,8 +8,12 @@ import br.com.carrent.model.Car;
 
 public interface CarRepository extends JpaRepository<Car, Long>{
 
-	Car findByPlaca(String placa);
+	Car findFirstByPlaca(String placa);
 
 	List<Car> findByModelo(String modelo);
+
+	void deleteByPlaca(Car car);
+
+	List<Car> findAllByDisponivelTrue();
 
 }

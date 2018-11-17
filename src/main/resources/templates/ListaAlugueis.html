@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Uncle Paw - Aluguel de carros</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+<link th:href="@{/css/Layout.css}"  href="../static/css/Layout.css" rel="stylesheet" />
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div class="container register">
+		<div class="row">
+			<div class="col-md-3 register-left">
+				<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+				<h3>Bem-vindo!</h3>
+				<p>30 anos de sucesso dirigindo com você no comando!</p>
+				<form method="GET" th:action="@{/carro/cadastro}">
+					<input type="submit" name="submit" value="Cadastro Carro"></input>
+				</form>
+				<form method="GET" th:action="@{/aluguel/cadastro}">
+					<input type="submit" name="" value="Cadastro Aluguel"></input> 
+		        </form>
+		        <form method="GET" th:action="@{/aluguel/todos}">
+					<input type="submit" name="" value="Ver Alugueis"></input><br /> 
+					</form>
+					<form method="GET" th:action="@{/carro/todos}">
+				<input type="submit" name="" value="Ver Carros"></input><br />
+				</form>
+			</div>
+			<div class="col-md-9 register-right">
+				<div>
+					<h3 class="register-heading">Lista de alugueis</h3>
+					<div class="row register-form">
+					<table class="table">
+						<tr style="text-align: center;">
+							<td>Identificador</td>
+							<td>Placa do carro</td>
+							<td>Valor final</td>
+							<td>Data de saída</td>
+							<td>Data de retorno</td>
+							<td>Editar</td>
+						</tr>
+						<tr th:each="aluguel : ${alugueis}" style="text-align: center;">
+							<td th:text="${aluguel.id}"></td>
+							<td th:text="${aluguel.carro.placa}"></td>
+							<td th:text="${aluguel.valorFinal}"></td>
+							<td th:text="${aluguel.dataSaida}"></td>
+							<td th:text="${aluguel.dataEntrada}"></td>
+							<td><a th:href="@{'/aluguel/' + ${aluguel.id}}" style="border: 0; background: none;">
+								<img src="https://image.flaticon.com/icons/png/512/1001/1001371.png"
+									alt="" height="11" width="11" />
+							</a></td>
+						</tr>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

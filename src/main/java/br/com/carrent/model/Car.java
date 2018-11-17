@@ -16,19 +16,27 @@ public class Car {
 	private String marca;
 	private String classe;
 	private int ano;
+	private boolean disponivel;
 	
 	public Car() {
 		super();
+		disponivel = true;
 	}
 	
-	public Car(Long id, String placa, String modelo, String marca, String classe, int ano, double valorBase) {
+	public Car(String placa) {
 		super();
-		this.id = id;
+		this.placa = placa;
+	}
+
+
+	public Car(String placa, String modelo, String marca, String classe, int ano, boolean disponivel) {
+		super();
 		this.placa = placa;
 		this.modelo = modelo;
 		this.marca = marca;
 		this.classe = classe;
 		this.ano = ano;
+		this.disponivel = disponivel;
 	}
 	
 	
@@ -39,6 +47,13 @@ public class Car {
 		this.marca = marca;
 		this.classe = classe;
 		this.ano = ano;
+		disponivel = true;
+	}
+
+	
+	@Override
+	public String toString() {
+		return placa + " - " + modelo;
 	}
 
 	public Long getId() {
@@ -76,6 +91,14 @@ public class Car {
 	}
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 
 }

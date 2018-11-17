@@ -4,10 +4,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Cadastro de Estoque</title>
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
-<link th:href="@{/css/Layout.css}"  href="../static/css/Layout.css" rel="stylesheet" />
+<title>Uncle Paw - Aluguel de carros</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/Layout.css}" href="../static/css/Layout.css"
+	rel="stylesheet" />
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
@@ -16,68 +19,62 @@
 		<div class="row">
 			<div class="col-md-3 register-left">
 				<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-				<h3>Welcome</h3>
-				<p>You are 30 seconds away from earning your own money!</p>
-				<input type="submit" name="" value="Login"></input><br />
+				<h3>Bem-vindo!</h3>
+				<p>30 anos de sucesso dirigindo com você no comando!</p>
+				<form method="GET" th:action="@{/carro/cadastro}">
+					<input type="submit" name="submit" value="Cadastro Carro"></input>
+				</form>
+				<form method="GET" th:action="@{/aluguel/cadastro}">
+					<input type="submit" name="" value="Cadastro Aluguel"></input>
+				</form>
+				<form method="GET" th:action="@{/aluguel/todos}">
+					<input type="submit" name="" value="Ver Alugueis"></input><br />
+				</form>
+				<form method="GET" th:action="@{/carro/todos}">
+					<input type="submit" name="" value="Ver Carros"></input><br />
+				</form>
 			</div>
 			<div class="col-md-9 register-right">
-				<div>
-					<h3 class="register-heading">Apply as a Employee</h3>
-					<div class="row register-form">
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" class="form-control"
-									placeholder="First Name *" value=""></input>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control"
-									placeholder="Last Name *" value=""></input>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control"
-									placeholder="Password *" value=""></input>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control"
-									placeholder="Confirm Password *" value=""></input>
-							</div>
-							<div class="form-group">
-								<div class="maxl">
-									<label class="radio inline"> <input type="radio"
-										name="gender" value="male"></input> <span> Male </span>
-									</label> <label class="radio inline"> <input type="radio"
-										name="gender" value="female"></input> <span>Female </span>
-									</label>
+				<form method="POST" th:object="${rent}" th:action="@{/aluguel/add}">
+					<div>
+						<h3 class="register-heading">Cadastro de alugueis</h3>
+						<h6 class="register-heading" th:if="${message}"
+							th:text="${message}" style="position: absolute; right: 150px;"></h6>
+						<div class="row register-form">
+							<div class="col-md-6">
+								<div class="form-group">
+									Identificador <input type="text" class="form-control"
+										th:field="*{id}" placeholder="0" value="" disabled="disabled"></input>
+								</div>
+								<div class="form-group">
+									Placa do carro * <select class="selectpicker form-control"
+										th:field="*{carro}">
+										<option th:each="car : ${cars}" th:field="*{carro}"
+											th:value="${car.id}" th:text="${car.placa}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+									Valor final do aluguel <input type="text" class="form-control"
+										placeholder="Valor final" value="" th:field="*{valorFinal}"
+										disabled="disabled"></input>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="email" class="form-control"
-									placeholder="Your Email *" value=""></input>
+							<div class="col-md-6">
+								<div class="form-group">
+									Data de saída <input type="date" name="carroAno"
+										class="form-control" th:field="*{dataSaida}"
+										placeholder="Data de saída" value="" required="required"></input>
+								</div>
+								<div class="form-group">
+									Data de entrada <input type="date" class="form-control"
+										placeholder="Data de entrada" value=""
+										th:field="*{dataEntrada}"></input>
+								</div>
+								<input type="submit" class="btnRegister" value="Registrar"></input>
 							</div>
-							<div class="form-group">
-								<input type="text" minlength="10" maxlength="10"
-									name="txtEmpPhone" class="form-control"
-									placeholder="Your Phone *" value=""></input>
-							</div>
-							<div class="form-group">
-								<select class="form-control">
-									<option class="hidden">Please select your Sequrity
-										Question</option>
-									<option>What is your Birthdate?</option>
-									<option>What is Your old Phone Number</option>
-									<option>What is your Pet Name?</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control"
-									placeholder="Enter Your Answer *" value=""></input>
-							</div>
-							<input type="submit" class="btnRegister" value="Register"></input>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
