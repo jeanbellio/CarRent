@@ -47,6 +47,49 @@ public class CarServiceTest {
 		carroTeste.setClasse("A");
 		assertEquals("Carro não corresponde aos requisitos mínimos", this.carService.verificaAno(carroTeste, 2018));
 	}
+	
+	
+	@Test
+	public void testCarroClasseBComCincoAnos() {
+		carroTeste.setAno(2013);
+		carroTeste.setClasse("B");
+		assertEquals("Carro inserido com sucesso", this.carService.verificaAno(carroTeste, 2018));
+	}
+	
+	@Test
+	public void testCarroClasseBComMenosDeCincoAnos() {
+		carroTeste.setAno(2015);
+		carroTeste.setClasse("B");
+		assertEquals("Carro inserido com sucesso", this.carService.verificaAno(carroTeste, 2018));
+	}
+	
+	@Test
+	public void testCarroClasseBComMaisDeCincoAnos() {
+		carroTeste.setAno(2012);
+		carroTeste.setClasse("B");
+		assertEquals("Carro não corresponde aos requisitos mínimos", this.carService.verificaAno(carroTeste, 2018));
+	}
 
+	
+	@Test
+	public void testCarroClasseCComSeteAnos() {
+		carroTeste.setAno(2011);
+		carroTeste.setClasse("C");
+		assertEquals("Carro inserido com sucesso", this.carService.verificaAno(carroTeste, 2018));
+	}
+	
+	@Test
+	public void testCarroClasseCComMenosDeSeteAnos() {
+		carroTeste.setAno(2012);
+		carroTeste.setClasse("C");
+		assertEquals("Carro inserido com sucesso", this.carService.verificaAno(carroTeste, 2018));
+	}
+	
+	@Test
+	public void testCarroClasseCComMaisDeSeteAnos() {
+		carroTeste.setAno(2010);
+		carroTeste.setClasse("C");
+		assertEquals("Carro não corresponde aos requisitos mínimos", this.carService.verificaAno(carroTeste, 2018));
+	}
 
 }
