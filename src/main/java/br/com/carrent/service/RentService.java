@@ -25,12 +25,12 @@ public class RentService {
 		}
 		
 		calculaAluguelPorClasse(rent);
-		atualizaCarro(rent);
+		atualizaDisponobilidadeCarro(rent);
 		rentRepository.save(rent);
 		return "Aluguel salvo com sucesso.";
 	}
 
-	private void atualizaCarro(Rent rent) {
+	public void atualizaDisponobilidadeCarro(Rent rent) {
 		Car car = carRepository.findFirstByPlaca(rent.getCarro().getPlaca());
 		if(rent.getDataSaida() == null) {
 			car.setDisponivel(false);
@@ -40,7 +40,7 @@ public class RentService {
 		carRepository.save(car);
 	}
 
-	private Rent calculaAluguelPorClasse(Rent rent) {
+	public Rent calculaAluguelPorClasse(Rent rent) {
 		long daysBetween = ChronoUnit.DAYS.between(rent.getDataSaida(), rent.getDataEntrada());
 		double valorTaxa = 1;
 		
@@ -64,5 +64,14 @@ public class RentService {
 		return rentRepository.findOne(id);
 	}
 
+	public void setRentRepository(RentRepository rentRepository) {
+		this.rentRepository = rentRepository;
+	}
+
+	public void setCarRepository(CarRepository carRepository) {
+		this.carRepository = carRepository;
+	}
+	
+	
 
 }

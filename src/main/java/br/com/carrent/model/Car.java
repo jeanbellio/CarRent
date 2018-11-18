@@ -39,18 +39,6 @@ public class Car {
 		this.disponivel = disponivel;
 	}
 	
-	
-	public Car(String placa, String modelo, String marca, String classe, int ano) {
-		super();
-		this.placa = placa;
-		this.modelo = modelo;
-		this.marca = marca;
-		this.classe = classe;
-		this.ano = ano;
-		disponivel = true;
-	}
-
-	
 	@Override
 	public String toString() {
 		return placa + " - " + modelo;
