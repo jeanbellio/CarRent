@@ -41,7 +41,7 @@ public class RentService {
 	}
 
 	public Rent calculaAluguelPorClasse(Rent rent) {
-		long daysBetween = ChronoUnit.DAYS.between(rent.getDataSaida(), rent.getDataEntrada());
+		long daysBetween = ChronoUnit.DAYS.between(rent.getDataEntrada(), rent.getDataSaida());
 		double valorTaxa = 1;
 		
 		if(rent.getCarro().getClasse().equals("A")) {
