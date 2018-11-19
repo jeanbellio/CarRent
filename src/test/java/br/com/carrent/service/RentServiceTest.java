@@ -44,7 +44,7 @@ public class RentServiceTest {
 	public void testCalculoAluguelPorClasseComClasseAPor10Dias() {
 		Car carTest = new Car();
 		carTest.setClasse("A");
-		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 30), LocalDate.of(2018, Month.APRIL, 20)); //10 dias
+		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 20), LocalDate.of(2018, Month.APRIL, 30)); //10 dias
 		Rent rentComValorFinalCalculado = new Rent();
 		rentComValorFinalCalculado.setValorFinal(1300);
 		
@@ -55,7 +55,7 @@ public class RentServiceTest {
 	public void testCalculoAluguelPorClasseComClasseBPor10Dias() {
 		Car carTest = new Car();
 		carTest.setClasse("B");
-		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 30), LocalDate.of(2018, Month.APRIL, 20)); //10 dias
+		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 20), LocalDate.of(2018, Month.APRIL, 30)); //10 dias
 		Rent rentComValorFinalCalculado = new Rent();
 		rentComValorFinalCalculado.setValorFinal(1200);
 		
@@ -66,7 +66,7 @@ public class RentServiceTest {
 	public void testCalculoAluguelPorClasseComClasseCPor10Dias() {
 		Car carTest = new Car();
 		carTest.setClasse("C");
-		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 30), LocalDate.of(2018, Month.APRIL, 20)); //10 dias
+		Rent rentTeste = new Rent(carTest, LocalDate.of(2018, Month.APRIL, 20), LocalDate.of(2018, Month.APRIL, 30)); //10 dias
 		Rent rentComValorFinalCalculado = new Rent();
 		rentComValorFinalCalculado.setValorFinal(1100);
 		
